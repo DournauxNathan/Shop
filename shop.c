@@ -28,11 +28,11 @@ int main()
 		objet pomme = {"Pomme",5};
 		objet eau =  {"Eau",2};
 		objet potionRouge = {"Potion rouge",5};
-		objet potionVerte = {"Potion vert",30};
+		objet potionVerte = {"Potion vert",10};
 		//Armes
-		objet epee =  {"Epee en bois",40};
+		objet epee =  {"Epee en bois",15};
 		//Armures
-		objet bouclier = {"Bouclier en bois", 50};
+		objet bouclier = {"Bouclier en bois", 25};
 
 	/*Pointeur redirigant vers le nom de l'objet*/
 	void Achat(objet * monObjet)
@@ -47,14 +47,38 @@ int main()
 
 		printf("Or: %d\n\n", orJoueur);
 
+		printf("-- -- -- -- -- -- --\n\n");
 		if (nPomme > 0)
 		{
 			printf("%s x %d\n\n", pomme.nomObjet,nPomme);
 		}
 
-		
+		if (nEau > 0)
+		{
+			printf("%s x %d\n\n", eau.nomObjet,nEau);
+		}
 
-		scanf("%d", &choixJoueur);
+		if (nPotionRouge > 0)
+		{
+			printf("%s x %d\n\n", potionRouge.nomObjet,nPotionRouge);
+		}
+
+		if (nPotionVerte > 0)
+		{
+			printf("%s x %d\n\n", potionVerte.nomObjet,nPotionVerte);
+		}
+
+		if (nEpee > 0)
+		{
+			printf("%s x %d\n\n", epee.nomObjet,nEpee);
+		}
+		if (nBouclier > 0)
+		{
+			printf("%s x %d\n\n", bouclier.nomObjet,nBouclier);
+		}
+		printf("-- --\n");
+		printf("Votre choix: "); scanf("%d", &choixJoueur); printf("\n");
+		printf("-- --\n\n");
 		if (choixJoueur == 1)
 		{
 			printf("Que vendez-vous ? [1]  Inventaire [2]  Quittez [3] \n\n");
@@ -74,13 +98,20 @@ int main()
 				case 2 :
 				Inventaire();
 				break;
+			}
 
-				case 3 :
-					printf("Marchand: A bientot !\n\n");
-					return;
-				break;
+			if (choixJoueur == 3)
+			{
+				printf("Marchand: A bientot !\n\n");
+				return;
 			}
 		}
+
+		if(choixJoueur == 3)
+		{
+			printf("Marchand: A bientot !\n\n");
+			return;
+		}	
 	}
 
 
@@ -110,54 +141,61 @@ int main()
 			switch (choixJoueur)
 			{
 				case 1 :
-					printf("Selectionner un article: "); scanf("%d", &monChoixArticle);
-					printf("-- --\n\n");
-					if (monChoixArticle == 1)
+					if (orJoueur > 0)
 					{
-						printf("Vous avez choisi la %s\n\n",pomme.nomObjet);
-						Achat(&pomme);
-						printf("Vous achetez une %s\n\n"),pomme.nomObjet;
-						nPomme++;
-					}
+						printf("Selectionner un article: "); scanf("%d", &monChoixArticle);
+						printf("-- --\n\n");
+						if (monChoixArticle == 1 && orJoueur >= 5)
+						{
+							printf("Vous avez choisi la %s\n\n",pomme.nomObjet);
+							Achat(&pomme);
+							printf("Vous achetez une %s\n\n"),pomme.nomObjet;
+							nPomme++;
+						}
 
-					if (monChoixArticle == 2)
-					{
-						printf("Vous avez choisi l' %s\n\n",eau.nomObjet);
-						Achat(&eau);
-						printf("Vous achetez l'%s\n\n",eau.nomObjet);
-						nEau++;
-					}
+						if (monChoixArticle == 2 && orJoueur >= 2)
+						{
+							printf("Vous avez choisi l' %s\n\n",eau.nomObjet);
+							Achat(&eau);
+							printf("Vous achetez l'%s\n\n",eau.nomObjet);
+							nEau++;
+						}
 
-					if (monChoixArticle == 3)
-					{
-						printf("Vous avez choisi la %s\n\n",potionRouge.nomObjet);
-						Achat(&potionRouge);
-						printf("Vous achetez la %s\n\n",potionRouge.nomObjet);
-						nPotionRouge++;
-					}
+						if (monChoixArticle == 3 && orJoueur >= 5)
+						{
+							printf("Vous avez choisi la %s\n\n",potionRouge.nomObjet);
+							Achat(&potionRouge);
+							printf("Vous achetez la %s\n\n",potionRouge.nomObjet);
+							nPotionRouge++;
+						}
 
-					if (monChoixArticle == 4)
-					{
-						printf("Vous avez choisi la %s\n\n",potionVerte.nomObjet);
-						Achat(&potionVerte);
-						printf("Vous achetez la %s\n\n",potionVerte.nomObjet);
-						nPotionVerte++;
-					}
+						if (monChoixArticle == 4 && orJoueur >= 10)
+						{
+							printf("Vous avez choisi la %s\n\n",potionVerte.nomObjet);
+							Achat(&potionVerte);
+							printf("Vous achetez la %s\n\n",potionVerte.nomObjet);
+							nPotionVerte++;
+						}
 
-					if (monChoixArticle == 5)
-					{
-						printf("Vous avez choisi l' %s\n\n",epee.nomObjet);
-						Achat(&epee);
-						printf("Vous achetez l'%s\n\n",epee.nomObjet);
-						nEpee++;
-					}
+						if (monChoixArticle == 5 && orJoueur >= 15)
+						{
+							printf("Vous avez choisi l' %s\n\n",epee.nomObjet);
+							Achat(&epee);
+							printf("Vous achetez l'%s\n\n",epee.nomObjet);
+							nEpee++;
+						}
 
-					if (monChoixArticle == 6)
+						if (monChoixArticle == 6 && orJoueur >= 25)
+						{
+							printf("Vous avez choisi la %s\n\n",bouclier.nomObjet);
+							Achat(&bouclier);
+							printf("Vous achetez un %s\n\n",bouclier.nomObjet);
+							nBouclier++;
+						}
+					}
+					if (orJoueur == 0 || orJoueur <= 0 )
 					{
-						printf("Vous avez choisi la %s\n\n",bouclier.nomObjet);
-						Achat(&pomme);
-						printf("Vous achetez un %s\n\n",bouclier.nomObjet);
-						nBouclier++;
+						printf("Vous n'avez plus d'or l'ami\n\n");
 					}
 				break;
 
@@ -181,12 +219,19 @@ int main()
 							Inventaire();
 						break;
 
-						case 3 :
+						if (choixJoueur == 3)
+						{
 							printf("Marchand: A bientot !\n\n");
-							return;
-						break;
+							return;	
+						}
 					}
 				break;
+
+				if (choixJoueur == 3)
+				{
+					printf("Marchand: A bientot !\n\n");
+					return;	
+				}
 			}
 		}	
 	}
