@@ -26,16 +26,53 @@ int main()
 		//Armures
 		objet bouclier = {"Bouclier en bois", 50}
 	
-	/*Affichage du magasin:
-		Choix du joueur allant vers les différents menu (Magasin,Inventaire et Quittez*/
-	printf("Marchand: Bienvenue voyageur ! \n\n");
-	printf("Que vendez-vous ? [1]\n\n");
-	printf("-- --\n");
-	printf("Votre choix: "); scanf("%d", &choixJoueur);
-	printf("-- --\n\n");
+	/*Pointeur redirigant vers le nom de l'objet*/
+		void selectArticle(objet * monObjet)
+		{
+			orJoueur = orJoueur - (*monObjet).prixObjet;
+		}
 
-	switch (choixJoueur)
-	{
+	/*Achat (Choix d'un article + Depense le prix indiqué)*/
+		void Achat() 
+		{
+			while(orJoueur > 0)
+			{
+				printf("Or: %d\n\n", orJoueur);
+
+				//Choix: Selectionner un article ou revenir au menu précédent
+				printf("Selectionner [1]   Revenir [2]\n\n");
+				printf("-- --\n");
+				printf("Votre choix: "); scanf("%d", &choixJoueur);
+				printf("-- --\n\n");
+
+				switch (choixJoueur)
+				{
+					case 1 :
+						printf("Selectionner un article: "); scanf("%d", &monChoixArticle);
+						printf("-- --\n\n");
+						if (monChoixArticle == 1)
+						{
+							printf("Vous avez choisi la %s\n\n",pomme.nomObjet);
+							selectArticle(&pomme);
+							printf("Vous achetez un pomme\n\n");
+						}
+
+					break;
+
+					case 2 :
+					break;
+				}
+			}
+		}
+
+	/*Choix du menu: Magasin, Inventaire et Quittez*/
+		printf("Marchand: Bienvenue voyageur ! \n\n");
+		printf("Que vendez-vous ? [1]\n\n");
+		printf("-- --\n");
+		printf("Votre choix: "); scanf("%d", &choixJoueur);
+		printf("-- --\n\n");
+
+	switch (choixJoueur) {
 		case 1 :
 			printf("Marchand: Des babioles, des petites choses...\n\n");
 			printf("_____________________\n\n");
@@ -48,6 +85,9 @@ int main()
 			printf("%s | Prix: %d |\n\n", epee.nomObjet, epee.prixObjet);
 			printf("%s | Prix: %d |\n\n", bouclier.nomObjet, bouclier.prixObjet);
 			printf("-- -- -- -- -- -- --\n\n");
+
+			//Appel de la fonction Achat
+			Achat();
 		break;
 	}
 
