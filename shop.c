@@ -12,6 +12,7 @@ typedef struct Objet objet;
 int main()
 {
 	int choixJoueur;
+	int monChoixArticle;
 	int orJoueur;
 
 	/*Liste des articles proposés dans le magasin*/
@@ -49,4 +50,6 @@ int main()
 			printf("-- -- -- -- -- -- --\n\n");
 		break;
 	}
+
+	return 0;
 }
